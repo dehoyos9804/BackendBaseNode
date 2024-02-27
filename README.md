@@ -1,5 +1,5 @@
-# Backend Base NodeJS :rocket:
-Base system for Back-End development using NodeJS
+# Backend Base NodeSkel :rocket:
+Base system for Back-End development using NodeJS (codename: **NodeSkel**)
 
 ## Description
 This system describes the use and setup of a **Api rest** wearing [**JavaScript**](https://www.javascript.com/) y [**NodeJs**](https://nodejs.org/en/download/)
@@ -24,20 +24,25 @@ It is recommended to use [**npm**](https://www.npmjs.com/)
 /
 ├── app
 │   ├── config
-│   └── __init__.py
-│   │   ├── databases
-│   │   ├── google
-│   │   └── cache.py
-│   │   └── local_settings.py
-│   │   └── settings.py
+│   │   ├── database
+│   │   ├── ├── settings.js
+│   │   ├── settings.js
 │   ├── ext
+│   │   ├── rest
+│   │   ├── ├── rest.js
+│   │   ├── ├── http.status.js
+│   │   ├── utils
 │   ├── home
+│   │   ├── urls.routes.js
+│   │   ├── views
+│   │   ├── models
 ├── .dockerignore
 ├── .editorconfig
 ├── .gcloudignore
 ├── .gitignore
 ├── Dockerfile
 ├── index.js
+├── LICENSE
 ├── package-lock.json
 ├── README.md
 ```

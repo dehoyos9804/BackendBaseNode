@@ -1,13 +1,13 @@
 const express = require("express");
 const routers = express.Router();
-const Rest = require("../ext/rest/rest");
-const { APP_VERSION } = require("../config/settings");
+
+const HomeAPIView = require("./views/home.view");
+const home = new HomeAPIView();
 
 //Definir rutas del módulo
-routers.get("", (req, res) => {
-	Rest.response(res, 200, "OK", {
-		home: `Welcome API, version ${APP_VERSION}`,
-	});
-});
+routers.get("", home.get.bind(HomeAPIView));
+routers.post("", home.post.bind(HomeAPIView));
+routers.put("", home.put.bind(HomeAPIView));
+routers.delete("", home.delete.bind(HomeAPIView));
 
 module.exports = routers;

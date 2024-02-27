@@ -11,7 +11,11 @@ const {
 	DEFAULT_HOST,
 	ENDPOINT_API,
 	INSTALLED_MODULES,
+	DATABASE_CONNECTION,
 } = require("./app/config/settings");
+
+const getSequelizeInstance = require("./app/config/database/settings");
+const db = getSequelizeInstance(DATABASE_CONNECTION);
 
 const fs = require("fs");
 const app = express();
@@ -20,6 +24,17 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
+
+// comprobar conexion a bd si se configuro
+if (db !== null) {
+	db.authenticate()
+		.then(() => {
+			logger.info("Connection has been established successfully.");
+		})
+		.catch((err) => {
+			logger.error(`Unable to connect to the database: ${err}`);
+		});
+}
 
 // route definition
 app.get("/", (req, res) => {
@@ -49,7 +64,7 @@ app.use((req, res, next) => {
 	err.status = 404;
 	logger.error(err);
 
-	Rest.response(res, 200, "OK", "Route not found, use /api instead");
+	Rest.response(res, 404, "OK", "Route not found, use /api instead");
 });
 
 app.use((err, req, res, next) => {

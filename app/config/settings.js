@@ -9,6 +9,8 @@ const ENDPOINT_API = "/api";
 
 const INSTALLED_MODULES = ["home"];
 
+const DATABASE_CONNECTION = null;
+
 module.exports = {
 	APP_VERSION,
 	DEFAULT_HOST,
@@ -17,4 +19,5 @@ module.exports = {
 	APP_PATH,
 	ENDPOINT_API,
 	INSTALLED_MODULES,
+	DATABASE_CONNECTION,
 };

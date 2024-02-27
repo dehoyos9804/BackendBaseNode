@@ -20,7 +20,7 @@ class Rest {
 			json_resp["errors"] = errors;
 		}
 
-		res.json(json_resp);
+		res.status(status).json(json_resp);
 	}
 }
 
